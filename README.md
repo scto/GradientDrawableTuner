@@ -1,4 +1,4 @@
-# GradientDrawableTuner [![gitHub release](https://img.shields.io/github/release/duanhong169/GradientDrawableTuner.svg?style=social)](https://github.com/duanhong169/GradientDrawableTuner/releases) [![Travis CI](https://travis-ci.com/duanhong169/GradientDrawableTuner.svg?branch=master)](https://travis-ci.com/duanhong169/GradientDrawableTuner) [![license](https://img.shields.io/badge/license-Apache%202-green.svg)](https://github.com/duanhong169/GradientDrawableTuner/blob/master/LICENSE)
+# GradientDrawableTuner [![gitHub release](https://img.shields.io/github/release/duanhong169/GradientDrawableTuner.svg?style=social)](https://github.com/duanhong169/GradientDrawableTuner/releases)
 
 English
 

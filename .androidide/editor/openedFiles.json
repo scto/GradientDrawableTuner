@@ -1,0 +1,35 @@
+{
+  "allFiles": [
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/GradientDrawableTuner/app/build.gradle",
+      "selection": {
+        "end": {
+          "column": 0,
+          "index": 0,
+          "line": 0
+        },
+        "start": {
+          "column": 0,
+          "index": 0,
+          "line": 0
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/GradientDrawableTuner/README.md",
+      "selection": {
+        "end": {
+          "column": 196,
+          "index": 196,
+          "line": 0
+        },
+        "start": {
+          "column": 196,
+          "index": 196,
+          "line": 0
+        }
+      }
+    }
+  ],
+  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/GradientDrawableTuner/app/build.gradle"
+}
