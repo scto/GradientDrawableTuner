@@ -4,7 +4,8 @@ buildscript {
     
     repositories {
         google()
-        jcenter()
+        maven { url "https://repo.grails.org/grails/core/" }
+        mavenCentral()
     }
     dependencies {
         classpath 'com.android.tools.build:gradle:8.0.0'
@@ -18,7 +19,9 @@ buildscript {
 allprojects {
     repositories {
         google()
-        jcenter()
+        mavenCentral()
+
+                maven { url "https://repo.grails.org/grails/core/" }
     }
 }
 
