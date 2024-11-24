@@ -1,30 +1,11 @@
 apply plugin: 'com.android.library'
 
-ext {
-    bintrayRepo = 'Hong'
-    bintrayName = 'text-button'
-
-    publishedGroupId = 'com.github.duanhong169'
-    artifact = 'text-button'
-
-    libraryName = 'TextButton'
-    libraryDescription = 'Use textview as button easily'
-    libraryVersion = '1.0.5'
-
-    siteUrl = 'https://github.com/duanhong169/TextButton'
-    gitUrl = 'https://github.com/duanhong169/TextButton.git'
-
-    licenseName = 'The MIT License, Version 2.0'
-    licenseUrl = 'http://www.apache.org/licenses/LICENSE-2.0.txt'
-    allLicenses = ["Apache-2.0"]
-}
-
 android {
-    compileSdkVersion 27
-
+    compileSdkVersion 34
+namespace 'top.defaults.view.textbutton'
     defaultConfig {
-        minSdkVersion 14
-        targetSdkVersion 27
+        minSdkVersion 24
+        targetSdkVersion 34
         versionCode 1
         versionName "1.0"
 
@@ -49,5 +30,3 @@ dependencies {
     androidTestImplementation 'com.android.support.test:runner:1.0.2'
     androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.2'
 }
-
-apply from: 'https://raw.githubusercontent.com/duanhong169/bintray-gradle/master/bintray.gradle'
