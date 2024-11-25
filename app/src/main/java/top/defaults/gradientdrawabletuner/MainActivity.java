@@ -136,7 +136,7 @@ public class MainActivity extends AppCompatActivity {
                         currentDrawableSpec = AppDatabase.getInstance(this).drawableSpecDao().findById(id);
                         isEdited.postValue(false);
                     }));
-                    setNameDialogFragment.show(getSupportFragmentManager(), "setName");
+                    setNameDialogFragment.show(getFragmentManager(), "setName");
                 } else {
                     AppDatabase.execute(() -> {
                         AppDatabase.getInstance(this).drawableSpecDao().update(currentDrawableSpec);
