@@ -2,8 +2,8 @@ package top.defaults.gradientdrawabletuner;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.databinding.BindingAdapter;
-import android.support.annotation.Nullable;
+import androidx.annotation.Nullable;
+import androidx.databinding.BindingAdapter;
 import android.text.TextUtils;
 import android.util.AttributeSet;
 import android.view.Gravity;

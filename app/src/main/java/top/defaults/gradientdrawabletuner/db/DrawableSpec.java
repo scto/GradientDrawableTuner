@@ -1,8 +1,8 @@
 package top.defaults.gradientdrawabletuner.db;
+import androidx.room.Embedded;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
 
-import android.arch.persistence.room.Embedded;
-import android.arch.persistence.room.Entity;
-import android.arch.persistence.room.PrimaryKey;
 
 @Entity(tableName = "drawable_spec")
 public class DrawableSpec {

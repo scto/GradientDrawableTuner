@@ -1,7 +1,9 @@
 package top.defaults.gradientdrawabletuner;
 
 import android.content.Context;
-import android.databinding.BindingAdapter;
+import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatTextView;
+import androidx.databinding.BindingAdapter;
 import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
@@ -14,8 +16,7 @@ import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.graphics.drawable.GradientDrawable;
 import android.graphics.drawable.LayerDrawable;
-import android.support.annotation.Nullable;
-import android.support.v7.widget.AppCompatTextView;
+
 import android.util.AttributeSet;
 import android.view.Gravity;
 

@@ -3,8 +3,9 @@ package top.defaults.gradientdrawabletuner;
 import android.content.Context;
 import android.graphics.Color;
 import android.graphics.drawable.GradientDrawable;
-import android.support.annotation.Nullable;
+import androidx.annotation.NonNull;
 
+import androidx.annotation.Nullable;
 import org.dom4j.Document;
 import org.dom4j.DocumentHelper;
 import org.dom4j.Element;

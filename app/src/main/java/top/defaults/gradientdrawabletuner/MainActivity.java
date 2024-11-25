@@ -1,17 +1,12 @@
 package top.defaults.gradientdrawabletuner;
 
-import android.arch.lifecycle.LiveData;
-import android.arch.lifecycle.MutableLiveData;
-import android.arch.lifecycle.Observer;
-import android.arch.lifecycle.ViewModelProviders;
 import android.content.Intent;
 import android.content.res.Resources;
-import android.databinding.DataBindingUtil;
+import androidx.appcompat.app.AppCompatActivity;
+import androidx.constraintlayout.widget.Group;
+import androidx.core.content.ContextCompat;
+import androidx.databinding.DataBindingUtil;
 import android.graphics.drawable.GradientDrawable;
-import android.support.annotation.Nullable;
-import android.support.constraint.Group;
-import android.support.v4.content.ContextCompat;
-import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.text.SpannableString;
 import android.text.Spanned;
@@ -24,11 +19,12 @@ import android.widget.RadioGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
 
+import androidx.lifecycle.LiveData;
+import androidx.lifecycle.MutableLiveData;
+import androidx.lifecycle.Observer;
+import androidx.lifecycle.ViewModelProviders;
 import java.util.List;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
-import butterknife.OnClick;
 import top.defaults.gradientdrawabletuner.databinding.ActivityMainBinding;
 import top.defaults.gradientdrawabletuner.db.AppDatabase;
 import top.defaults.gradientdrawabletuner.db.DrawableSpec;
@@ -36,22 +32,17 @@ import top.defaults.gradientdrawabletuner.db.DrawableSpecFactory;
 
 public class MainActivity extends AppCompatActivity {
 
-    @BindView(R.id.statusTextView) TextView statusTextView;
-    @BindView(R.id.imageView) ImageView imageView;
-    @BindView(R.id.shape) RadioGroup shapeSwitcher;
-    @BindView(R.id.cornerRadiusRow) ValueRow cornerRadiusRow;
-    @BindView(R.id.fourCorners) Group fourCorners;
+    
+     TextView statusTextView;
+     ImageView imageView;
+    RadioGroup shapeSwitcher;
+    ValueRow cornerRadiusRow;
+    Group fourCorners;
 
     private DrawableViewModel viewModel;
     private DrawableSpec currentDrawableSpec = DrawableSpecFactory.tempSpec();
     private MutableLiveData<Boolean> isEdited = new MutableLiveData<>();
 
-    @OnClick(R.id.reviewCode)
-    void reviewCode() {
-        Intent intent = new Intent(this, XmlCodeViewActivity.class);
-        intent.putExtra(XmlCodeViewActivity.EXTRA_PROPERTIES, viewModel.getDrawableProperties().getValue());
-        startActivity(intent);
-    }
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -62,17 +53,21 @@ public class MainActivity extends AppCompatActivity {
         ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.setLifecycleOwner(this);
         viewModel.apply(currentDrawableSpec.getProperties());
-
-        ButterKnife.bind(this);
-
+        
+        binding.reviewCode.setOnClickListener(v->{
+            Intent intent = new Intent(this, XmlCodeViewActivity.class);
+        intent.putExtra(XmlCodeViewActivity.EXTRA_PROPERTIES, viewModel.getDrawableProperties().getValue());
+        startActivity(intent);
+        });
+        
         Resources resources = getResources();
-        shapeSwitcher.setOnCheckedChangeListener((group, checkedId) -> {
+        binding.shape.setOnCheckedChangeListener((group, checkedId) -> {
             if (checkedId != R.id.rectangle) {
-                cornerRadiusRow.setExtensionsChecked(false);
+                binding.cornerRadiusRow.setExtensionsChecked(false);
             }
             viewModel.updateProperty("shapeId", checkedId);
         });
-        cornerRadiusRow.setOnExtensionsCheckedListener(checked -> fourCorners.setVisibility(checked ? View.VISIBLE : View.GONE));
+        binding.cornerRadiusRow.setOnExtensionsCheckedListener(checked -> binding.fourCorners.setVisibility(checked ? View.VISIBLE : View.GONE));
 
         viewModel.getDrawableProperties().observe(this, properties -> {
             if (properties != null) {
@@ -85,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
                 }
                 RelativeLayout.LayoutParams params = new RelativeLayout.LayoutParams(width, height);
                 params.addRule(RelativeLayout.CENTER_IN_PARENT);
-                imageView.setLayoutParams(params);
+                binding.imageView.setLayoutParams(params);
 
                 isEdited.setValue(currentDrawableSpec.getId() == 0
                         || !properties.equals(currentDrawableSpec.getProperties()));
@@ -160,7 +155,7 @@ public class MainActivity extends AppCompatActivity {
             status.setSpan(new ForegroundColorSpan(
                     ContextCompat.getColor(this, R.color.status_unsaved_color)),
                     start, status.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
-            statusTextView.setText(status);
+            binding.statusTextView.setText(status);
         } else {
             statusTextView.setText(String.format("Spec: [%s]", currentDrawableSpec.getName()));
         }

@@ -2,28 +2,32 @@ package top.defaults.gradientdrawabletuner;
 
 import android.graphics.Typeface;
 import android.os.Bundle;
-import android.support.annotation.Nullable;
-import android.support.v7.app.ActionBar;
-import android.support.v7.app.AppCompatActivity;
+import androidx.annotation.NonNull;
 import android.view.MenuItem;
 import android.widget.TextView;
 
-import butterknife.BindView;
-import butterknife.ButterKnife;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.ActionBar;
+import androidx.appcompat.app.AppCompatActivity;
+import top.defaults.gradientdrawabletuner.databinding.ActivityXmlCodeViewBinding;
 import top.defaults.gradientdrawabletuner.db.DrawablePropertiesInRoom;
 
 public class XmlCodeViewActivity extends AppCompatActivity {
 
     static final String EXTRA_PROPERTIES = "extra_code";
 
-    @BindView(R.id.xmlCodeTextView) TextView xmlCodeTextView;
+    TextView xmlCodeTextView;
+    
+    ActivityXmlCodeViewBinding binding;
 
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setTitle(R.string.review_code);
-        setContentView(R.layout.activity_xml_code_view);
-        ButterKnife.bind(this);
+        
+        binding = ActivityXmlCodeViewBinding.inflate(getLayoutInflater());
+        setContentView(binding.getRoot());
+        
 
         ActionBar actionBar = getSupportActionBar();
         if (actionBar != null) {
@@ -32,10 +36,10 @@ public class XmlCodeViewActivity extends AppCompatActivity {
         }
 
         DrawablePropertiesInRoom properties = getIntent().getParcelableExtra(EXTRA_PROPERTIES);
-        xmlCodeTextView.setText(ShapeXmlGenerator.shapeXmlString(properties));
+        binding.xmlCodeTextView.setText(ShapeXmlGenerator.shapeXmlString(properties));
         Typeface typeface = Fonts.getDefault(this);
         if (typeface != null) {
-            xmlCodeTextView.setTypeface(typeface);
+            binding.xmlCodeTextView.setTypeface(typeface);
         }
     }
 

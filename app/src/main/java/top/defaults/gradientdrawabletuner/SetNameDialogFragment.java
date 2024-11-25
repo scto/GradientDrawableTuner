@@ -1,10 +1,9 @@
 package top.defaults.gradientdrawabletuner;
 
+import android.app.DialogFragment;
 import android.graphics.Point;
 import android.os.Bundle;
-import android.support.annotation.NonNull;
-import android.support.annotation.Nullable;
-import android.support.v4.app.DialogFragment;
+
 import android.text.TextUtils;
 import android.view.Display;
 import android.view.Gravity;
@@ -14,6 +13,8 @@ import android.view.ViewGroup;
 import android.view.Window;
 import android.view.WindowManager;
 import android.widget.EditText;
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 
 public class SetNameDialogFragment extends DialogFragment {
 
