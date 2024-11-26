@@ -1,7 +1,11 @@
 package top.defaults.gradientdrawabletuner;
 
+import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.widget.Toast;
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AlertDialog;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.constraintlayout.widget.Group;
 import androidx.core.content.ContextCompat;
@@ -23,6 +27,7 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
+import com.google.android.material.dialog.MaterialAlertDialogBuilder;
 import java.util.List;
 
 import top.defaults.gradientdrawabletuner.databinding.ActivityMainBinding;
@@ -33,12 +38,8 @@ import top.defaults.gradientdrawabletuner.db.DrawableSpecFactory;
 public class MainActivity extends AppCompatActivity {
 
     
-     TextView statusTextView;
-     ImageView imageView;
-    RadioGroup shapeSwitcher;
-    ValueRow cornerRadiusRow;
-    Group fourCorners;
-
+    ActivityMainBinding binding;
+    
     private DrawableViewModel viewModel;
     private DrawableSpec currentDrawableSpec = DrawableSpecFactory.tempSpec();
     private MutableLiveData<Boolean> isEdited = new MutableLiveData<>();
@@ -50,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         setTitle(getString(R.string.crafting_shape));
 
         viewModel = ViewModelProviders.of(this).get(DrawableViewModel.class);
-        ActivityMainBinding binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
+        binding = DataBindingUtil.setContentView(this, R.layout.activity_main);
         binding.setLifecycleOwner(this);
         viewModel.apply(currentDrawableSpec.getProperties());
         
@@ -104,19 +105,18 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public boolean onOptionsItemSelected(MenuItem item) {
-        switch (item.getItemId()) {
-            case R.id.newSpec:
-                currentDrawableSpec = DrawableSpecFactory.tempSpec();
+        
+        if (item.getItemId()== R.id.newSpec){
+            currentDrawableSpec = DrawableSpecFactory.tempSpec();
                 viewModel.apply(currentDrawableSpec.getProperties());
                 isEdited.setValue(true);
-                break;
-            case R.id.set:
-                LiveData<List<DrawableSpec>> liveData = AppDatabase.getInstance(this).drawableSpecDao().getAll();
+        } else if (item.getItemId()== R.id.set){
+            LiveData<List<DrawableSpec>> liveData = AppDatabase.getInstance(this).drawableSpecDao().getAll();
                 liveData.observe(this, new Observer<List<DrawableSpec>>() {
                     @Override
                     public void onChanged(@Nullable List<DrawableSpec> drawableSpecs) {
                         if (drawableSpecs != null && drawableSpecs.size() > 0) {
-                            new DrawableSpecChooser(MainActivity.this, drawableSpecs).show(imageView, drawableSpec -> {
+                            new DrawableSpecChooser(MainActivity.this, drawableSpecs).show(binding.imageView, drawableSpec -> {
                                 currentDrawableSpec = drawableSpec;
                                 viewModel.apply(currentDrawableSpec.getProperties());
                                 isEdited.setValue(false);
@@ -125,25 +125,37 @@ public class MainActivity extends AppCompatActivity {
                         liveData.removeObserver(this);
                     }
                 });
-                break;
-            case R.id.save:
-                currentDrawableSpec.setProperties(viewModel.getDrawableProperties().getValue());
+        } else if (item.getItemId()== R.id.save){
+            currentDrawableSpec.setProperties(viewModel.getDrawableProperties().getValue());
                 if (currentDrawableSpec.getId() == 0) {
-                    SetNameDialogFragment setNameDialogFragment = new SetNameDialogFragment();
-                    setNameDialogFragment.setCallback(name -> AppDatabase.execute(() -> {
-                        currentDrawableSpec.setName(name);
-                        long id = AppDatabase.getInstance(this).drawableSpecDao().insert(currentDrawableSpec);
-                        currentDrawableSpec = AppDatabase.getInstance(this).drawableSpecDao().findById(id);
+                    new MaterialAlertDialogBuilder(this)
+                .setTitle("Name the spec")
+                .setView(R.layout.edit_text)
+                .setPositiveButton(
+                    "Save",
+                    new DialogInterface.OnClickListener() {
+                      @Override
+                      public void onClick(DialogInterface dialog, int which) {
+                        TextView input = ((AlertDialog) dialog).findViewById(android.R.id.text1);
+                            AppDatabase.execute(() -> {
+                            currentDrawableSpec.setName(input.getText().toString());
+                        long id = AppDatabase.getInstance(MainActivity.this).drawableSpecDao().insert(currentDrawableSpec);
+                        currentDrawableSpec = AppDatabase.getInstance(MainActivity.this).drawableSpecDao().findById(id);
+                                    Toast.makeText(MainActivity.this, "Saved: "+input.getText(), Toast.LENGTH_LONG).show();
                         isEdited.postValue(false);
-                    }));
-                    setNameDialogFragment.show(getFragmentManager(), "setName");
+                            });
+                        
+                      }
+                    })
+                .setNegativeButton("Cancel", null)
+                .show();
+                
                 } else {
                     AppDatabase.execute(() -> {
                         AppDatabase.getInstance(this).drawableSpecDao().update(currentDrawableSpec);
                         isEdited.postValue(false);
                     });
                 }
-                break;
         }
         return super.onOptionsItemSelected(item);
     }
@@ -157,7 +169,7 @@ public class MainActivity extends AppCompatActivity {
                     start, status.length(), Spanned.SPAN_EXCLUSIVE_EXCLUSIVE);
             binding.statusTextView.setText(status);
         } else {
-            statusTextView.setText(String.format("Spec: [%s]", currentDrawableSpec.getName()));
+            binding.statusTextView.setText(String.format("Spec: [%s]", currentDrawableSpec.getName()));
         }
     }
 }

@@ -1,17 +1,47 @@
 {
   "allFiles": [
     {
-      "file": "/storage/emulated/0/AndroidIDEProjects/GradientDrawableTuner/app/build.gradle",
+      "file": "/storage/emulated/0/AndroidIDEProjects/GradientDrawableTuner/app/src/main/java/top/defaults/gradientdrawabletuner/MainActivity.java",
       "selection": {
         "end": {
-          "column": 50,
-          "index": 675,
-          "line": 22
+          "column": 55,
+          "index": 5699,
+          "line": 129
         },
         "start": {
-          "column": 50,
-          "index": 675,
-          "line": 22
+          "column": 55,
+          "index": 5699,
+          "line": 129
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/GradientDrawableTuner/app/src/main/java/top/defaults/gradientdrawabletuner/DrawableSpecChooser.java",
+      "selection": {
+        "end": {
+          "column": 139,
+          "index": 2780,
+          "line": 68
+        },
+        "start": {
+          "column": 139,
+          "index": 2780,
+          "line": 68
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/GradientDrawableTuner/app/src/main/res/values/styles.xml",
+      "selection": {
+        "end": {
+          "column": 43,
+          "index": 169,
+          "line": 4
+        },
+        "start": {
+          "column": 43,
+          "index": 169,
+          "line": 4
         }
       }
     },
@@ -19,29 +49,74 @@
       "file": "/storage/emulated/0/AndroidIDEProjects/GradientDrawableTuner/app/src/main/res/layout/activity_main.xml",
       "selection": {
         "end": {
-          "column": 31,
-          "index": 26073,
-          "line": 441
+          "column": 60,
+          "index": 5745,
+          "line": 134
         },
         "start": {
-          "column": 31,
-          "index": 26073,
-          "line": 441
+          "column": 60,
+          "index": 5745,
+          "line": 134
         }
       }
     },
     {
-      "file": "/storage/emulated/0/AndroidIDEProjects/GradientDrawableTuner/app/src/main/java/top/defaults/gradientdrawabletuner/MainActivity.java",
+      "file": "/storage/emulated/0/AndroidIDEProjects/GradientDrawableTuner/app/src/main/res/layout/edit_text.xml",
       "selection": {
         "end": {
-          "column": 5,
-          "index": 7306,
-          "line": 161
+          "column": 27,
+          "index": 602,
+          "line": 13
         },
         "start": {
-          "column": 5,
-          "index": 7306,
-          "line": 161
+          "column": 27,
+          "index": 602,
+          "line": 13
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/GradientDrawableTuner/app/src/main/res/layout/popup_drawable_spec_chooser.xml",
+      "selection": {
+        "end": {
+          "column": 13,
+          "index": 1257,
+          "line": 30
+        },
+        "start": {
+          "column": 13,
+          "index": 1257,
+          "line": 30
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/GradientDrawableTuner/app/src/main/java/top/defaults/gradientdrawabletuner/App.java",
+      "selection": {
+        "end": {
+          "column": 31,
+          "index": 76,
+          "line": 2
+        },
+        "start": {
+          "column": 31,
+          "index": 76,
+          "line": 2
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/GradientDrawableTuner/app/build.gradle",
+      "selection": {
+        "end": {
+          "column": 70,
+          "index": 1962,
+          "line": 60
+        },
+        "start": {
+          "column": 70,
+          "index": 1962,
+          "line": 60
         }
       }
     },
@@ -49,32 +124,32 @@
       "file": "/storage/emulated/0/AndroidIDEProjects/GradientDrawableTuner/app/src/main/java/top/defaults/gradientdrawabletuner/ColorIndicator.java",
       "selection": {
         "end": {
-          "column": 31,
-          "index": 4652,
-          "line": 128
+          "column": 0,
+          "index": 0,
+          "line": 0
         },
         "start": {
-          "column": 31,
-          "index": 4652,
-          "line": 128
+          "column": 0,
+          "index": 0,
+          "line": 0
         }
       }
     },
     {
-      "file": "/storage/emulated/0/AndroidIDEProjects/GradientDrawableTuner/app/src/main/java/top/defaults/gradientdrawabletuner/DrawableViewModel.java",
+      "file": "/storage/emulated/0/AndroidIDEProjects/GradientDrawableTuner/app/src/main/java/top/defaults/gradientdrawabletuner/XmlCodeViewActivity.java",
       "selection": {
         "end": {
-          "column": 55,
-          "index": 687,
-          "line": 19
+          "column": 103,
+          "index": 1384,
+          "line": 38
         },
         "start": {
-          "column": 55,
-          "index": 687,
-          "line": 19
+          "column": 103,
+          "index": 1384,
+          "line": 38
         }
       }
     }
   ],
-  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/GradientDrawableTuner/app/src/main/res/layout/activity_main.xml"
+  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/GradientDrawableTuner/app/src/main/java/top/defaults/gradientdrawabletuner/ColorIndicator.java"
 }

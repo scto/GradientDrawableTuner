@@ -12,6 +12,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.PopupWindow;
 
+import android.widget.Toast;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import java.util.List;
@@ -56,11 +57,19 @@ public class DrawableSpecChooser {
             if (observer != null) {
                 observer.onDrawableSpecChose(drawableSpecs.get(position));
             }
-            popupWindow.dismiss();
+           popupWindow.dismiss();
         });
         drawableSpecsRecyclerView.setAdapter(adapter);
 
         popupWindow.setAnimationStyle(R.style.DrawableSpecChooserAnimation);
+        
+        // Ensure the parent view is valid before showing the PopupWindow
+    if (parent == null || parent.getWindowToken() == null) {
+        
+            Toast.makeText(context,"Parent view is invalid. Ensure it is initialized and attached to a window.",Toast.LENGTH_SHORT).show();
+        //throw new IllegalArgumentException("Parent view is invalid. Ensure it is initialized and attached to a window.");
+    }
+        
         popupWindow.showAtLocation(parent, Gravity.CENTER, 0, 0);
     }
 

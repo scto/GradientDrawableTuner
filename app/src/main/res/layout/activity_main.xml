@@ -5,7 +5,7 @@
     <data>
         <import type="android.view.View"/>
         <import type="top.defaults.gradientdrawabletuner.R"/>
-        <import type="java.lang.Math"/>
+        
         <variable
             name="viewModel"
             type="top.defaults.gradientdrawabletuner.DrawableViewModel"/>
@@ -25,25 +25,22 @@
         <LinearLayout
             android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:orientation="horizontal"
-            android:background="#F2F2F2">
+            android:orientation="horizontal">
 
             <TextView
                 android:id="@+id/statusTextView"
                 android:layout_width="0dp"
                 android:layout_height="wrap_content"
                 android:layout_weight="1"
-                android:padding="8dp"
-                android:textColor="@color/colorPrimaryDark"/>
+                android:padding="8dp"/>
 
-            <top.defaults.view.TextButton
+            <TextView
                 android:id="@+id/reviewCode"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:padding="8dp"
                 android:text="@string/review_code"
-                android:textColor="@color/colorPrimaryDark"
-                app:underline="true"/>
+                android:textColor="@color/mtrl_on_surface_ripple_color"/>
         </LinearLayout>
 
         <top.defaults.gradientdrawabletuner.CheckerboardRelativeLayout
@@ -271,6 +268,7 @@
                             android:text="@string/gradient_type_sweep"/>
 
                     </RadioGroup>
+
 
                     <top.defaults.gradientdrawabletuner.ValueRow
                         android:id="@+id/angleRow"

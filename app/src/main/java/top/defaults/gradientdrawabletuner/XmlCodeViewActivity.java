@@ -36,7 +36,7 @@ public class XmlCodeViewActivity extends AppCompatActivity {
         }
 
         DrawablePropertiesInRoom properties = getIntent().getParcelableExtra(EXTRA_PROPERTIES);
-        binding.xmlCodeTextView.setText(ShapeXmlGenerator.shapeXmlString(properties));
+        binding.xmlCodeTextView.setText(ShapeXmlGenerator.shapeXmlString(properties).replaceAll("0x","#"));
         Typeface typeface = Fonts.getDefault(this);
         if (typeface != null) {
             binding.xmlCodeTextView.setTypeface(typeface);
