@@ -3,6 +3,7 @@ package top.defaults.gradientdrawabletuner;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.content.res.Resources;
+import android.graphics.Color;
 import android.widget.Toast;
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AlertDialog;
@@ -154,6 +155,7 @@ public class MainActivity extends AppCompatActivity {
                     AppDatabase.execute(() -> {
                         AppDatabase.getInstance(this).drawableSpecDao().update(currentDrawableSpec);
                         isEdited.postValue(false);
+                        Toast.makeText(MainActivity.this, "Saved", Toast.LENGTH_LONG).show();
                     });
                 }
         }

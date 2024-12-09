@@ -18,8 +18,8 @@ android {
         }
     }
     compileOptions {
-        sourceCompatibility JavaVersion.VERSION_11
-        targetCompatibility JavaVersion.VERSION_11
+        sourceCompatibility JavaVersion.VERSION_17
+        targetCompatibility JavaVersion.VERSION_17
     }
     
     buildTypes {
@@ -60,6 +60,13 @@ dependencies {
     implementation 'com.github.duanhong169:colorpicker:1.1.1'
     implementation 'com.github.duanhong169:checkerboarddrawable:1.0.2'
     implementation 'com.github.duanhong169:drawabletoolbox:1.0.4'
+    
+    implementation(platform("io.github.Rosemoe.sora-editor:bom:0.23.4-467c137-SNAPSHOT"))
+    implementation 'io.github.Rosemoe.sora-editor:editor'
+    implementation 'io.github.Rosemoe.sora-editor:language-textmate'
+    
+    implementation 'com.google.code.gson:gson:2.10.1'
+
     implementation project(':annotations')
     annotationProcessor project(':compiler')
 }
