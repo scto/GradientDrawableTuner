@@ -1,20 +1,35 @@
 {
   "allFiles": [
     {
-      "file": "/storage/emulated/0/AndroidIDEProjects/GradientDrawableTuner/app/src/main/java/top/defaults/gradientdrawabletuner/XmlCodeViewActivity.java",
+      "file": "/storage/emulated/0/AndroidIDEProjects/GradientDrawableTuner/settings.gradle",
       "selection": {
         "end": {
-          "column": 7,
-          "index": 1468,
-          "line": 37
+          "column": 14,
+          "index": 14,
+          "line": 0
         },
         "start": {
-          "column": 7,
-          "index": 1468,
-          "line": 37
+          "column": 14,
+          "index": 14,
+          "line": 0
+        }
+      }
+    },
+    {
+      "file": "/storage/emulated/0/AndroidIDEProjects/GradientDrawableTuner/app/build.gradle",
+      "selection": {
+        "end": {
+          "column": 53,
+          "index": 2309,
+          "line": 67
+        },
+        "start": {
+          "column": 53,
+          "index": 2309,
+          "line": 67
         }
       }
     }
   ],
-  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/GradientDrawableTuner/app/src/main/java/top/defaults/gradientdrawabletuner/XmlCodeViewActivity.java"
+  "selectedFile": "/storage/emulated/0/AndroidIDEProjects/GradientDrawableTuner/app/build.gradle"
 }
